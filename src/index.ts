@@ -1,30 +1,4 @@
-export interface Item {
-  name: string
-  description: string
-  price: number
-}
-
-interface PricingPlan {
-  calculateTotal: (items: Item[]) => number
-}
-
-export class RegularPricing implements PricingPlan {
-  calculateTotal(items: Item[]) {
-    return items.reduce((total,current) => total+(current.price/100),0) 
-  }
-}
-
-export class MicrosoftPricing implements PricingPlan {
-  calculateTotal(items: Item[]) {
-    return items.reduce((total,current) => total+current.price,0) 
-  }
-}
-
-export class AmazonPricing implements PricingPlan {
-  calculateTotal(items: Item[]) {
-    return items.reduce((total,current) => total+current.price,0) 
-  }
-}
+import { PricingPlan,Item } from './types';
 
 export class Checkout {
 
