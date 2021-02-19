@@ -67,5 +67,15 @@ describe('Checkout', () => {
       //then
       expect(checkout.total()).toEqual('$1,079.96')
     })
+      it('TEMP', () => {
+      //given
+      const pricing = new MicrosoftPricing()
+      const checkout = new Checkout(pricing)
+      //when
+        checkout.add(largePizza)
+        checkout.add(largePizza)
+      //then
+      expect(checkout.total()).toEqual('$789.98')
+    })
   })
 });
