@@ -1,4 +1,6 @@
-import { Item, Checkout, RegularPricing, MicrosoftPricing } from '../src/index';
+import { Checkout} from '../src/index';
+import { Item } from '../src/types';
+import { RegularPricing, MicrosoftPricing, AmazonPricing } from '../src/pricingStrategies';
 
 
 describe('Checkout', () => {
@@ -19,7 +21,7 @@ describe('Checkout', () => {
   }
 
   describe('Regular customer', () => {
-    it('should not apply any discount and correctly total the cost', () => {
+    it('Challenge Test case', () => {
       //given
       const pricing = new RegularPricing()
       const checkout = new Checkout(pricing)
@@ -44,8 +46,52 @@ describe('Checkout', () => {
       //then
       expect(checkout.total()).toEqual('$987.97')
     })
-    it.skip('should apply a 3 for 2 deal on small pizzas', () => {
-
+    it('should apply a 3 for 2 deal on small pizzas', () => {
+      //given
+      const pricing = new MicrosoftPricing()
+      const checkout = new Checkout(pricing)
+      //when
+      checkout.add(smallPizza)
+      checkout.add(smallPizza)
+      checkout.add(smallPizza)
+      //then
+      expect(checkout.total()).toEqual('$539.98')
+    })
+    it('should apply a 6 for 4 deal on small pizzas', () => {
+      //given
+      const pricing = new MicrosoftPricing()
+      const checkout = new Checkout(pricing)
+      //when
+      Array.from({length: 6}).forEach(() => {checkout.add(smallPizza)})
+      //then
+      expect(checkout.total()).toEqual('$1,079.96')
+    })
+      it('Challenge Test case', () => {
+      //given
+      const pricing = new MicrosoftPricing()
+      const checkout = new Checkout(pricing)
+      //when
+      checkout.add(smallPizza)
+      checkout.add(smallPizza)
+      checkout.add(smallPizza)
+      checkout.add(largePizza)
+      //then
+      expect(checkout.total()).toEqual('$934.97')
     })
   })
+  describe.only('Amazon Customer', () => {
+      it('Challenge Test case', () => {
+      //given
+      const pricing = new AmazonPricing()
+      const checkout = new Checkout(pricing)
+      //when
+      checkout.add(mediumPizza)
+      checkout.add(mediumPizza)
+      checkout.add(mediumPizza)
+      checkout.add(largePizza)
+      //then
+      expect(checkout.total()).toEqual('$1,294.96')
+    })
+  })
+  
 });
