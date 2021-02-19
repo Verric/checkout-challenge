@@ -47,7 +47,7 @@ describe('Checkout', () => {
       expect(checkout.total()).toEqual('$987.97')
     })
     it('should apply a 3 for 2 deal on small pizzas', () => {
-//given
+      //given
       const pricing = new MicrosoftPricing()
       const checkout = new Checkout(pricing)
       //when
@@ -57,6 +57,15 @@ describe('Checkout', () => {
       checkout.add(largePizza)
       //then
       expect(checkout.total()).toEqual('$934.97')
+    })
+    it('should apply a 6 for 4 deal on small pizzas', () => {
+      //given
+      const pricing = new MicrosoftPricing()
+      const checkout = new Checkout(pricing)
+      //when
+      Array.from({length: 6}).forEach(() => {checkout.add(smallPizza)})
+      //then
+      expect(checkout.total()).toEqual('$1,079.96')
     })
   })
 });
