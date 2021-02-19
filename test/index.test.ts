@@ -21,7 +21,7 @@ describe('Checkout', () => {
   }
 
   describe('Regular customer', () => {
-    it('should not apply any discount and correctly total the cost', () => {
+    it('Challenge Test case', () => {
       //given
       const pricing = new RegularPricing()
       const checkout = new Checkout(pricing)
@@ -54,9 +54,8 @@ describe('Checkout', () => {
       checkout.add(smallPizza)
       checkout.add(smallPizza)
       checkout.add(smallPizza)
-      checkout.add(largePizza)
       //then
-      expect(checkout.total()).toEqual('$934.97')
+      expect(checkout.total()).toEqual('$539.98')
     })
     it('should apply a 6 for 4 deal on small pizzas', () => {
       //given
@@ -67,15 +66,17 @@ describe('Checkout', () => {
       //then
       expect(checkout.total()).toEqual('$1,079.96')
     })
-      it('TEMP', () => {
+      it('Challenge Test case', () => {
       //given
       const pricing = new MicrosoftPricing()
       const checkout = new Checkout(pricing)
       //when
-        checkout.add(largePizza)
-        checkout.add(largePizza)
+      checkout.add(smallPizza)
+      checkout.add(smallPizza)
+      checkout.add(smallPizza)
+      checkout.add(largePizza)
       //then
-      expect(checkout.total()).toEqual('$789.98')
+      expect(checkout.total()).toEqual('$934.97')
     })
   })
 });
