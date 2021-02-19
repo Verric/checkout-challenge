@@ -1,4 +1,6 @@
-import { Item, Checkout, RegularPricing, MicrosoftPricing } from '../src/index';
+import { Checkout} from '../src/index';
+import { Item } from '../src/types';
+import {RegularPricing, MicrosoftPricing} from '../src/pricingStrategies'
 
 
 describe('Checkout', () => {
@@ -44,8 +46,17 @@ describe('Checkout', () => {
       //then
       expect(checkout.total()).toEqual('$987.97')
     })
-    it.skip('should apply a 3 for 2 deal on small pizzas', () => {
-
+    it('should apply a 3 for 2 deal on small pizzas', () => {
+//given
+      const pricing = new MicrosoftPricing()
+      const checkout = new Checkout(pricing)
+      //when
+      checkout.add(smallPizza)
+      checkout.add(smallPizza)
+      checkout.add(smallPizza)
+      checkout.add(largePizza)
+      //then
+      expect(checkout.total()).toEqual('$934.97')
     })
   })
 });
