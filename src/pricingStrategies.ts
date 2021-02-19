@@ -20,7 +20,11 @@ export class MicrosoftPricing implements PricingPlan {
 }
 
 export class AmazonPricing implements PricingPlan {
-  calculateTotal(items: Item[]) {
-    return items.reduce((total,current) => total+current.price,0) 
+    calculateTotal(items: Item[]) {
+        const foo = items.map(item => {
+            if (item.name === 'Large Pizza') item.price = 29999
+            return item
+      })
+    return foo.reduce((total,current) => total+(current.price/100),0) 
   }
 }

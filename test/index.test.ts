@@ -1,6 +1,6 @@
 import { Checkout} from '../src/index';
 import { Item } from '../src/types';
-import {RegularPricing, MicrosoftPricing} from '../src/pricingStrategies'
+import { RegularPricing, MicrosoftPricing, AmazonPricing } from '../src/pricingStrategies';
 
 
 describe('Checkout', () => {
@@ -79,4 +79,19 @@ describe('Checkout', () => {
       expect(checkout.total()).toEqual('$934.97')
     })
   })
+  describe.only('Amazon Customer', () => {
+      it('Challenge Test case', () => {
+      //given
+      const pricing = new AmazonPricing()
+      const checkout = new Checkout(pricing)
+      //when
+      checkout.add(mediumPizza)
+      checkout.add(mediumPizza)
+      checkout.add(mediumPizza)
+      checkout.add(largePizza)
+      //then
+      expect(checkout.total()).toEqual('$1,294.96')
+    })
+  })
+  
 });
