@@ -19,7 +19,7 @@ describe('Checkout', () => {
     description: '15" Pizza for four persons',
     price: 39499
   }
-
+//----------------REGULAR CUSTOMER----------------------
   describe('Regular customer', () => {
     it('Challenge Test case', () => {
       //given
@@ -33,7 +33,7 @@ describe('Checkout', () => {
       expect(checkout.total()).toEqual('$987.97')
     })
   })
-
+//----------------MICROSOFT CUSTOMER----------------------
   describe('Microsoft customer', () => {
     it('should not apply any discount and correctly total the cost', () => {
       //given
@@ -79,6 +79,7 @@ describe('Checkout', () => {
       expect(checkout.total()).toEqual('$934.97')
     })
   })
+  //----------------AMAZON CUSTOMER----------------------
   describe('Amazon Customer', () => {
       it('Challenge Test case', () => {
       //given
@@ -93,6 +94,7 @@ describe('Checkout', () => {
       expect(checkout.total()).toEqual('$1,294.96')
     })
   })
+  //----------------FACEBOOK CUSTOMER----------------------
     describe.only('Facebook Customer', () => {
       it('Challenge Test case', () => {
       //given
