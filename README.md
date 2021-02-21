@@ -2,6 +2,12 @@
 
 Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
 
+### Usage
+
+- `git clone git@github.com:Verric/checkout-challenge.git`
+- `yarn install`
+- `yarn test`
+
 ### Approach
 
 Here we decided to the strategy pattern to allow us to inject and method of calculating discounts at runtime, without bloating the main checkout class.
