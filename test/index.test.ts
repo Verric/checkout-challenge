@@ -91,11 +91,11 @@ describe('Checkout', () => {
       checkout.add(mediumPizza)
       checkout.add(largePizza)
       //then
-      expect(checkout.total()).toEqual('$1,294.96')
+      expect(checkout.total()).toEqual('$1,268.96')
     })
   })
   //----------------FACEBOOK CUSTOMER----------------------
-    describe.only('Facebook Customer', () => {
+    describe('Facebook Customer', () => {
       it('Challenge Test case', () => {
       //given
       const pricing = new FacebookPricing()
