@@ -2,7 +2,8 @@
 
 Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
 
-###Approach
+### Approach
+
 Here we decided to the strategy pattern to allow us to inject and method of calculating discounts at runtime, without bloating the main checkout class.
 ![UML](https://res.cloudinary.com/b0bd0l3/image/upload/v1613864809/UML_1.png)
 
