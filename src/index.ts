@@ -19,6 +19,7 @@ export class Checkout {
   }
 
   total(): string {
-    return this.formatter.format(this.pricingPlan.calculateTotal(this.items));
+    const orderTotal = this.pricingPlan.calculateTotal(this.items);
+    return this.formatter.format(orderTotal);
   }
 }
