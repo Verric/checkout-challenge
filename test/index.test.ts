@@ -5,6 +5,7 @@ import {
   MicrosoftPricing,
   AmazonPricing,
   FacebookPricing,
+  AfterPayPricing,
 } from '../src/pricingStrategies';
 
 describe('Checkout', () => {
@@ -115,6 +116,29 @@ describe('Checkout', () => {
       checkout.add(largePizza);
       //then
       expect(checkout.total()).toEqual('$1,681.95');
+    });
+  });
+
+  describe.only('AfterPay', () => {
+    it('should correctly calculate a non discounted order', () => {
+      const pricing = new AfterPayPricing();
+      const checkout = new Checkout(pricing);
+
+      checkout.add(smallPizza);
+      checkout.add(smallPizza);
+
+      expect(checkout.total()).toEqual('$539.98');
+    });
+    it('should correctly calculate a discounted order', () => {
+      const pricing = new AfterPayPricing();
+      const checkout = new Checkout(pricing);
+
+      checkout.add(largePizza);
+      checkout.add(largePizza);
+      checkout.add(largePizza);
+      checkout.add(largePizza);
+
+      expect(checkout.total()).toEqual('$1,519.96');
     });
   });
 });

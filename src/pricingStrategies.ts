@@ -48,3 +48,21 @@ export class FacebookPricing implements PricingPlan {
     return (subtotal - discount) / 100;
   }
 }
+
+export class AfterPayPricing implements PricingPlan {
+  calculateTotal(items: Item[]) {
+    const numberOfLargerPizza = items.filter(
+      item => item.name === 'Large Pizza'
+    ).length;
+    let prices;
+    if (numberOfLargerPizza >= 4) {
+      prices = items.map(item =>
+        item.name === 'Large Pizza' ? { ...item, price: 37999 } : item
+      );
+    } else {
+      prices = [...items];
+    }
+
+    return prices.reduce((total, current) => total + current.price / 100, 0);
+  }
+}
